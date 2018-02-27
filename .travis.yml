@@ -1,20 +1,15 @@
-language: cpp
-dist: trusty
-matrix:
-  include:
-  - os: linux
-    env: PYTHON=3.5
-  - os: linux
-    env: PYTHON=3.6
+language: python
+python:
+  - 3.4
+  - 3.5
+  - 3.6
 addons:
   apt:
     packages:
+      - build-essential
       - coinor-libclp-dev
-      - python3-pip
 install:
-  - pip3 install --user -U pip setuptools virtualenv wheel
-  - virtualenv -p python$PYTHON venv
-  - source venv/bin/activate
+  - pip install -U pip setuptools wheel pybind11
 script:
   - python setup.py install
   - python setup.py test
