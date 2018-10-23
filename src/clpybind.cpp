@@ -178,11 +178,8 @@ PYBIND11_MODULE(clpybind, m) {
             .export_values();
 
     simplex.def("initial_solve", [](ClpSimplex &simplex, bool dual) -> ProblemStatus {
-        int status;
-        if (dual) {
-            status = simplex.initialDualSolve();
-        }
-        status = simplex.initialPrimalSolve();
+        int status = dual ? simplex.initialDualSolve() :
+                            simplex.initialPrimalSolve();
         return ProblemStatus(status);
     }, py::arg("dual") = true);
 
