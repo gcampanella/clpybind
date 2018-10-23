@@ -51,7 +51,7 @@ setup(
             ],
             libraries=['Clp'],
             extra_compile_args=sysconfig.get_config_var('CFLAGS').split() +
-                               ["-std=c++11", "-Wall", "-Wextra"],
+                               ['-std=c++11', '-Wall', '-Wextra'],
             language='c++11'
         )
     ],
